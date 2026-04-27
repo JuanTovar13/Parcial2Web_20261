@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import appReducer from './slices/appSlice';
+import workspaceReducer from './slices/appSlice';
 
 export const storeRedux = configureStore({
 	reducer: {
-		app: appReducer,
+		workspace: workspaceReducer,
 	},
 });
 
