@@ -9,12 +9,13 @@ export const Summary = () => {
     state.workspace.reserved)
 
     
+    
     return(
         <div>
             <h4>Total Spaces: {workspaces.length}</h4>
             <h4>Available: {workspaces.filter((item) => item.available === true).length}</h4>
             <h4>Reserves: {reserved.length}</h4>
-            <h4>Total Income: </h4>
+
             
         </div>
     )

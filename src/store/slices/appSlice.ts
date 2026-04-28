@@ -24,10 +24,26 @@ const workspaceSlice = createSlice({
 					(item) => item.id !== action.payload.workspace.id
 				)
 			 }
+		},
+			filterWorkspace(state, action: PayloadAction<{ filter: string }>) {
+		const { filter } = action.payload
+		if (!filter) {
+			state.workspace = [...data]
+			state.reserved = state.reserved.filter((workspace) =>
+			data.some((item) => item.id === workspace.id)
+			)
+			return
 		}
-
-	},
+		state.workspace = [...data].filter(
+			(workspace) =>
+			workspace.type.trim().toLowerCase() === filter
+		)
+		state.reserved = state.reserved.filter((reserve) => 
+			reserve.type.trim().toLowerCase() === filter 
+	)
+},
+	}
 });
 
-export const { handleReservation } = workspaceSlice.actions;
+export const { handleReservation, filterWorkspace } = workspaceSlice.actions;
 export default workspaceSlice.reducer;
