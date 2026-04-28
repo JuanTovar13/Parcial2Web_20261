@@ -1,9 +1,10 @@
-import type { RootState } from "../store/store"
-import { useSelector } from "react-redux"
+import type { RootState, AppDispatch } from "../store/store"
+import { useSelector, useDispatch } from "react-redux"
+import { handleReservation } from "../store/slices/appSlice"
 
 
 export const List = () => {
-
+    const dispatch = useDispatch<AppDispatch>()
     const workspaces = useSelector((state:RootState) => 
     state.workspace.workspace)
     return (
@@ -17,6 +18,7 @@ export const List = () => {
                         <p>{workspace.location}</p>
                         <p>{workspace.pricePerHour}</p>
                         <p>{workspace.available}</p>
+                        <button onClick={() => dispatch(handleReservation({workspace}))}>Reserve</button>
                     </li>
                 ))}
             </ul>
